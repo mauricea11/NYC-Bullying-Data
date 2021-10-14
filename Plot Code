@@ -1,0 +1,8 @@
+library(readxl)
+X2017_New_York_City_DASA <- read_excel("2017_New_York_City_DASA.xlsx", range = "$A$3:$H$1803")
+View(X2017_New_York_City_DASA)
+X2017_New_York_City_DASA <- na.omit(X2017_New_York_City_DASA)
+barplot(table(X2017_New_York_City_DASA$`Grade Organization`), xlab = "Grade Level", main = "Reported Number of Bullying Incidents Based on Grade Level")
+barplot(table(X2017_New_York_City_DASA$County), xlab = "County", main = "Reported Number of Bullying Incidents Based on NYC Counties")
+hist(X2017_New_York_City_DASA$Enrollment, xlab = "Enrollment Range", main = "Reported Number of Bullying Incidents Based on Enrollment Size")
+barplot(table(X2017_New_York_City_DASA$`School Type`), xlab = "School Type", main = "Reported Number of Bullying Incidents Based on School Type")
