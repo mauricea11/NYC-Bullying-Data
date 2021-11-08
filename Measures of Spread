@@ -1,0 +1,26 @@
+src2 = read_excel("Copy of 2017_New_York_City_DASA.xlsx", range = "$A$3:$U$1802")
+View(src2)
+
+#Mean Enrollment, Color, Disability, and Sexual Orientation
+mean(src2$Enrollment)
+mean(src2$Color)
+mean(src2$Disability)
+mean(src2$`Sexual Orientation`)
+
+#Median Enrollment, Color, Disability, and Sexual Orientation
+median(src2$Enrollment)
+median(src2$Color)
+median(src2$Disability)
+median(src2$`Sexual Orientation`)
+
+#Variance Enrollment, Color, Disability, and Sexual Orientation
+var(src2$Enrollment)
+var(src2$Color)
+var(src2$Disability)
+var(src2$`Sexual Orientation`)
+
+#Std Enrollment, Color, Disability, and Sexual Orientation
+sd(src2$Enrollment)
+sd(src2$Color)
+sd(src2$Disability)
+sd(src2$`Sexual Orientation`)
