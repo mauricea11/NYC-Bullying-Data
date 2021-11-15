@@ -1,0 +1,23 @@
+#Scatter plot of Instance of Disability Bullying Based on Enrollment
+plot(src2$Disability, src2$Enrollment, xlab = "Disability", ylab = "Enrollment Size",
+     main = "Disability Bullying in Relation to Enrollment Size")
+
+#Scatter plot of Instance of Race Bullying Based on Enrollment
+plot(src2$Color, src2$Enrollment, xlab = "Race", ylab = "Enrollment Size",
+     main = "Instance of Race Bullying in Relation to Enrollment Size")
+
+#Correlation of Instance of Disability Bullying Based on Enrollment
+cor(src2$Enrollment,src2$Disability)
+
+#Correlation of Instance of Race Bullying Based on Enrollment
+cor(src2$Color, src2$Enrollment)
+
+#95% CI for the Mean
+x_Bar1 = mean(src2$Disability)
+x_Bar2 = mean(src2$Color)
+s1 = sd(src2$Disability)
+s2 = sd(src2$Color)
+n = nrow(src2)
+
+c(x_Bar1 - qt(0.975, df = n - 1) * s1 / sqrt(n), x_Bar1 + qt(0.975, df = n - 1) * s1 / sqrt(n))
+c(x_Bar2 - qt(0.975, df = n - 1) * s2 / sqrt(n), x_Bar2 + qt(0.975, df = n - 1) * s2 / sqrt(n))
