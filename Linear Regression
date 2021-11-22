@@ -1,0 +1,47 @@
+#Linear Regression Based on Gender and Sexual Orientation
+
+
+x = src2$Gender
+y = src2$`Sexual Orientation`
+plot(`Sexual Orientation` ~ Gender, data = src2, main = "Gender vs Sexual Orientation")
+
+#Slope Numerator
+sxy = sum((x - mean(x)) * (y - mean(y)))
+
+#Slope Denominator
+sx = sum((x - mean(x))^2)
+c(sxy, sx)
+
+#Slope
+beta_1_hat = sxy / sx
+
+#Y-intercept in a-b(x_bar) Form
+beta_0_hat = mean(y) - beta_1_hat * mean(x)
+c(beta_1_hat, beta_0_hat)
+
+#Predicted Response for x = 6
+x_hat = 6
+y_hat = beta_0_hat + beta_1_hat * x_hat
+
+#Linear Regression Model
+lgm = lm(`Sexual Orientation` ~ Gender, data = src2)
+coef(lgm)
+abline(lgm, lwd = 1)
+
+#Additional Info on Fit of Line
+TSS = sum((y - mean(y))^2)
+RSS = sum((y - mean(y) - beta_1_hat * mean(x)))
+SSReg = sum((y_hat - mean(y)) ^ 2)
+SSE   = sum((y - y_hat) ^ 2)
+RSquared = 1 - (RSS / TSS)
+mean_x = mean(x)
+
+library(ggplot2)
+ggplot(data = src2, aes(lgm$residuals)) + 
+  geom_histogram(fill = 'steelblue', color = 'black') +
+  labs(title = 'Histogram of Residuals', x = 'Residuals', y = 'Frequency')
+resid(lgm)
+
+plot(predict(lgm), src2$`Sexual Orientation`, ylab = "Actual", xlab = "Predicted",
+     main = "Actual vs Predicted")
+abline(lgm, lwd = 1)
