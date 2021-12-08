@@ -1,0 +1,7 @@
+avg_dis = mean(src2$Disability)
+pop_mean = 0.353
+sig = 0.05
+n = NROW(src2)
+sd(src2$Disability)
+test_stat = (avg_dis - pop_mean) / (sd(src2$Disability) / sqrt(n))
+pnorm(q = test_stat, lower.tail = TRUE)
